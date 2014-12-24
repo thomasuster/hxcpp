@@ -10,7 +10,10 @@ class TestMain {
 		r.add(new TestStringHash());
 		r.add(new TestObjectHash());
 		r.add(new TestWeakHash());
+        r.add(new TestSerializer());
 		var success = r.run();
+        #if travis
 		Sys.exit(success ? 0 : 1);
+		#end
 	}
 }
