@@ -2458,7 +2458,7 @@ void HxFreeGCBlock(void *p) { HxFree(p); }
 #endif // HX_MEMORY_H_OVERRIDE
 
 
-//#define VERIFY_STACK_READ
+#define VERIFY_STACK_READ
 
 #ifdef VERIFY_STACK_READ
 // Just have something to do...
