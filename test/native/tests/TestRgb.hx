@@ -1,8 +1,20 @@
 package tests;
 import externs.RGB;
+import externs.ThreadPool;
 
 class TestRgb extends haxe.unit.TestCase
 {
+
+   public function testPool()
+   {
+       var poolPtr = ThreadPool.create(4);
+//       poolPtr.ptr.enqueue(function() {
+//           trace('do something');
+//       });
+       poolPtr.ptr.deleteMe();
+       assertTrue(true);
+   }
+
    public function testCreate()
    {
       // Pointer-like sysntax
