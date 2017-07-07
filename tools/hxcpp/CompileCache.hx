@@ -188,7 +188,7 @@ class CompileCache
            }
         }
 
-        if (inM*1024*1024<size)
+        if (inM*1024*1024 > size)
         {
            // newest first
            fileInfo.sort( function(a,b) return a.time > b.time ? -1 : 1 );
