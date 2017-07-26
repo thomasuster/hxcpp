@@ -1,4 +1,20 @@
+-main BuildToolLauncher
+-resource BuildToolLauncher.hx@BuildToolLauncherSignature
+-lib haxe-threadpool
 -neko ../../hxcpp.n
+-debug
+
+--next
+
+-neko ../../hxcpp-fallback.n
 -main BuildTool
+-lib haxe-threadpool
 -D neko_v1
 -debug
+
+--next
+
+-debug
+-main BuildTool
+-lib haxe-threadpool
+-cpp ../../bin/tools
