@@ -13,8 +13,11 @@ class BuildToolLauncher
     }
     
     static function isBuildingSelf():Bool {
-        if(sys.FileSystem.exists('BuildToolLauncher.hx')) {
-            if(sys.io.File.getContent('BuildToolLauncher.hx') == haxe.Resource.getString("BuildToolLauncherSignature")) {
+        var args:Array<String> = Sys.args();
+        var last:String = args[args.length-1]; 
+        if(sys.FileSystem.exists('${last}../../haxelib.json')) {
+            
+            if(sys.io.File.getContent('${last}../../haxelib.json') == haxe.Resource.getString("Signature")) {
                 return true;
             }
         }

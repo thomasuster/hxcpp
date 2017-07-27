@@ -1,5 +1,5 @@
 -main BuildToolLauncher
--resource BuildToolLauncher.hx@BuildToolLauncherSignature
+-resource ../../haxelib.json@Signature
 -lib haxe-threadpool
 -neko ../../hxcpp.n
 -debug
