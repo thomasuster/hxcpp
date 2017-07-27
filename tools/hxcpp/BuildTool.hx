@@ -545,45 +545,25 @@ class BuildTool
          }
          else
          {
-            var mutex = new Mutex();
+            var pool:ThreadPool = new ThreadPool(threads);
             Log.initMultiThreaded();
-            var main_thread = Thread.current();
             var compiler = mCompiler;
-            for(t in 0...threads)
-            {
-               Thread.create(function()
-               {
-                  try
-                  {
-                  while(threadExitCode==0)
-                  {
-                     mutex.acquire();
-                     if (to_be_compiled.length==0)
-                     {
-                        mutex.release();
-                        break;
-                     }
-                     var file = to_be_compiled.shift();
-                     mutex.release();
-                     compiler.compile(file,t,groupHeader,pchStamp);
-                  }
-                  }
-                  catch (error:Dynamic)
-                  {
-                     if (threadExitCode!=0)
+            pool.distributeLoop(to_be_compiled.length, function(index:Int) {
+                try
+                {
+                    var file = to_be_compiled[index];
+                    compiler.compile(file,index,groupHeader,pchStamp);
+                }
+                catch (error:Dynamic)
+                {
+                    if (threadExitCode!=0)
                         setThreadError(-1);
-                     else
-                        Log.warn("Error in compile thread: " + error);
-                  }
-                  main_thread.sendMessage("Done");
-               });
-            }
-
-            // Wait for theads to finish...
-            for(t in 0...threads)
-            {
-               Thread.readMessage(true);
-            }
+                    else
+                        Log.error("Error in compile thread: " + error);
+                }
+            });
+            pool.blockRunAll();
+            pool.end();
 
             // Already printed the error from the thread, just need to exit
             if (threadExitCode!=0)

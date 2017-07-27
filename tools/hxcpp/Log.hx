@@ -67,8 +67,6 @@ class Log
    {
       if (!mute)
       {
-         if (printMutex!=null)
-            printMutex.acquire();
          if (verbose && verboseMessage != "")
          {
             println(verboseMessage);
@@ -77,8 +75,6 @@ class Log
          {
             println(message);
          }
-         if (printMutex!=null)
-            printMutex.release();
       }
    }
    inline public static function v(verboseMessage:String):Void
@@ -171,12 +167,8 @@ class Log
          }
 
          sentWarnings.set(output, true);
-
-         if (printMutex!=null)
-            printMutex.acquire();
+          
          println(output);
-         if (printMutex!=null)
-            printMutex.release();
       }
    }
 }
