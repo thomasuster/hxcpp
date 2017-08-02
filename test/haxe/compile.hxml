@@ -1,4 +1,5 @@
 -cpp bin
 -main TestMain
 -resource TestMain.hx
+-debug 
 -D HXCPP_GC_MOVING
