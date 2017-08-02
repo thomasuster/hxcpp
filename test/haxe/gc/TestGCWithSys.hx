@@ -7,9 +7,6 @@ class TestGCWithSys extends haxe.unit.TestCase {
             cpp.vm.Thread.create(function() {
                 Md5.encode(sys.io.File.getContent('gc/testShouldNotExplode.txt'));
                 Md5.encode(sys.io.File.getContent('gc/testShouldNotExplode.txt'));
-                Md5.encode(sys.io.File.getContent('gc/testShouldNotExplode.txt'));
-                Md5.encode(sys.io.File.getContent('gc/testShouldNotExplode.txt'));
-                Md5.encode(sys.io.File.getContent('gc/testShouldNotExplode.txt'));
             });
         }
         assertTrue(true);
