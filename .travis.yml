@@ -39,4 +39,5 @@ script:
   - cd ~/haxe/tests/unit
   - haxe compile-cpp.hxml -D HXCPP_M32 && ./bin/cpp/TestMain-debug && rm -rf bin/cpp
   - haxe compile-cpp.hxml -D HXCPP_M64 && ./bin/cpp/TestMain-debug
-  - haxe compile-cppia.hxml -debug && haxelib run hxcpp ./bin/unit.cppia
+  - haxe compile-cppia.hxml -debug
+  - haxelib run hxcpp ./bin/unit.cppia
