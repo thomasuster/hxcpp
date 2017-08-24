@@ -1266,8 +1266,9 @@ class BuildTool
        runMain();
      }
      catch(e:Dynamic) {
-       Log.error('Uncaught exception on main thread: $e\n${haxe.CallStack.toString(haxe.CallStack.exceptionStack())}');
-       Tools.exit(1);
+        Sys.println('Uncaught exception on main thread: $e\n${haxe.CallStack.toString(haxe.CallStack.exceptionStack())}');
+       Log.info('Uncaught exception on main thread: $e\n${haxe.CallStack.toString(haxe.CallStack.exceptionStack())}');
+       Tools.exit(12);
      }
      Tools.exit(0);
    }
