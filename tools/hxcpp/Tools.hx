@@ -7,7 +7,7 @@ class Tools {
   }
 
   public static function exit(exitCode:Int) {
-     if(exit != 0) {
+     if(exitCode != 0) {
         Sys.println("GOT HERE");
         Sys.println(CallStack.toString(CallStack.callStack()));   
      }
