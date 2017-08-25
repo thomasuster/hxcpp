@@ -535,7 +535,7 @@ class BuildTool
             }
          } : null;
 
-         if (threads<2)
+         if (threads<2 || true)
          {
             for(file in to_be_compiled)
                mCompiler.compile(file,-1,groupHeader,pchStamp);
