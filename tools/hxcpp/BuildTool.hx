@@ -537,8 +537,15 @@ class BuildTool
 
          if (threads<2 || true)
          {
-            for(file in to_be_compiled)
-               mCompiler.compile(file,-1,groupHeader,pchStamp);
+            Log.info("GOT HERE");
+            try {
+               for(file in to_be_compiled)
+                  mCompiler.compile(file,-1,groupHeader,pchStamp);  
+            }
+            catch(e:Dynamic) {
+               Log.info(CallStack.toString(CallStack.callStack()));
+            }
+            Log.info("GOT EVEN HERE");
          }
          else
          {
@@ -549,7 +556,7 @@ class BuildTool
                    compiler.compile(file,-1,groupHeader,pchStamp);
                }
                catch (error:Dynamic) {
-                  Sys.println(CallStack.toString(CallStack.exceptionStack()));
+                  Log.info(CallStack.toString(CallStack.exceptionStack()));
                   if (threadExitCode!=0)
                      setThreadError(-1);
                   else
@@ -1216,7 +1223,7 @@ class BuildTool
       }
       catch (e:Dynamic)
       {
-         Sys.println(CallStack.toString(CallStack.exceptionStack()));
+         Log.info(CallStack.toString(CallStack.exceptionStack()));
          return "0.0.0";
       }
    }
@@ -2161,7 +2168,7 @@ class BuildTool
             err  = process.stderr.readAll().toString();
             process.close();
          } catch (e:Dynamic) {
-            Sys.println(CallStack.toString(CallStack.exceptionStack()));
+            Log.info(CallStack.toString(CallStack.exceptionStack()));
             Log.error(e); }
          Sys.setCwd(oldDir);
 

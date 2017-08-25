@@ -110,7 +110,7 @@ class PathManager
             output = ProcessManager.runProcess(Sys.getEnv ("HAXEPATH"), "haxelib", [ "path", name ], true, false);
          }
          catch (e:Dynamic) {
-            Sys.println(CallStack.toString(CallStack.exceptionStack()));
+            Log.info(CallStack.toString(CallStack.exceptionStack()));
          }
          
          Log.verbose = cache;
@@ -140,7 +140,7 @@ class PathManager
                      }
                   }
                   catch (e:Dynamic) {
-                     Sys.println(CallStack.toString(CallStack.exceptionStack()));
+                     Log.info(CallStack.toString(CallStack.exceptionStack()));
                   }
                }
             }
@@ -260,7 +260,7 @@ class PathManager
          }
          catch (e:Dynamic)
          {
-            Sys.println(CallStack.toString(CallStack.exceptionStack()));
+            Log.info(CallStack.toString(CallStack.exceptionStack()));
             return;  
          }
          
@@ -279,7 +279,7 @@ class PathManager
                }
             }
             catch (e:Dynamic) {
-               Sys.println(CallStack.toString(CallStack.exceptionStack()));
+               Log.info(CallStack.toString(CallStack.exceptionStack()));
             }
          }
          
@@ -290,7 +290,7 @@ class PathManager
             FileSystem.deleteDirectory(directory);
          }
          catch (e:Dynamic) {
-            Sys.println(CallStack.toString(CallStack.exceptionStack()));
+            Log.info(CallStack.toString(CallStack.exceptionStack()));
          }
       }
    }

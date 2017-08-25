@@ -370,7 +370,7 @@ class Setup
             }
          }
          catch(e:Dynamic) {
-            Sys.println(CallStack.toString(CallStack.exceptionStack()));
+            Log.info(CallStack.toString(CallStack.exceptionStack()));
          }
       }
 
@@ -437,7 +437,7 @@ class Setup
                }
             }
          } catch(e:Dynamic) {
-            Sys.println(CallStack.toString(CallStack.exceptionStack()));
+            Log.info(CallStack.toString(CallStack.exceptionStack()));
          }
 
          if (best==0)
@@ -622,7 +622,7 @@ class Setup
                }
             }
          } catch (e:Dynamic) {
-      Sys.println(CallStack.toString(CallStack.exceptionStack()));
+      Log.info(CallStack.toString(CallStack.exceptionStack()));
          };
 
          vc_setup_proc.close();
@@ -675,7 +675,7 @@ class Setup
             }
          }
       } catch(e:Dynamic){
-   Sys.println(CallStack.toString(CallStack.exceptionStack()));
+   Log.info(CallStack.toString(CallStack.exceptionStack()));
    }
       //if (cl_version!="") BuildTool.println("Using cl version: " + cl_version);
    }

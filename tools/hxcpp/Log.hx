@@ -132,7 +132,7 @@ class Log
                process.close ();
             }
             catch (e:Dynamic) {
-               Sys.println(CallStack.toString(CallStack.exceptionStack()));
+               Log.info(CallStack.toString(CallStack.exceptionStack()));
             };
 
             colorSupported = (result == 0);
