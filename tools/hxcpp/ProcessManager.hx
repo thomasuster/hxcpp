@@ -1,3 +1,4 @@
+import haxe.CallStack;
 import haxe.io.BytesOutput;
 import haxe.io.Eof;
 import haxe.io.Path;
@@ -127,6 +128,7 @@ class ProcessManager
          }
          catch (e:Dynamic)
          {
+            Sys.println(CallStack.toString(CallStack.exceptionStack()));
             if (!ignoreErrors)
             {
                //var text = formatMessage(command, args);
@@ -160,7 +162,9 @@ class ProcessManager
             var out = proc.stderr.readLine();
             result.push(out);
          }
-      } catch(e:Dynamic){}
+      } catch(e:Dynamic){
+         Sys.println(CallStack.toString(CallStack.exceptionStack()));
+      }
       proc.close();
       return result;
    }
@@ -180,7 +184,9 @@ class ProcessManager
             var out = proc.stdout.readLine();
             result.push(out);
          }
-      } catch(e:Dynamic){}
+      } catch(e:Dynamic){
+         Sys.println(CallStack.toString(CallStack.exceptionStack()));
+      }
       proc.close();
       return result;
    }
@@ -208,6 +214,7 @@ class ProcessManager
          }
          catch (e:Dynamic)
          {
+            Sys.println(CallStack.toString(CallStack.exceptionStack()));
             if (!ignoreErrors)
             {
                //Log.error("Error while running command\n" + formatMessage(command,args), e);
@@ -311,6 +318,7 @@ class ProcessManager
       }
       catch(e:Dynamic)
       {
+         Sys.println(CallStack.toString(CallStack.exceptionStack()));
          if (ignoreErrors)
             return null;
          Log.error(e+"");
@@ -334,6 +342,7 @@ class ProcessManager
             }
             catch (e:Eof)
             {
+               Sys.println(CallStack.toString(CallStack.exceptionStack()));
                waiting = false;
             }
          }
@@ -401,6 +410,7 @@ class ProcessManager
       }
       catch(e:Dynamic)
       {
+         Sys.println(CallStack.toString(CallStack.exceptionStack()));
          Log.lock();
          if (BuildTool.threadExitCode == 0)
          {
@@ -437,7 +447,9 @@ class ProcessManager
                         output.push(line);
                   }
                }
-               catch(e:Dynamic){ }
+               catch(e:Dynamic){
+                  Sys.println(CallStack.toString(CallStack.exceptionStack()));
+               }
                controller.sendMessage(output);
             }
          });
@@ -454,7 +466,9 @@ class ProcessManager
             output.push(line);
          }
       }
-      catch(e:Dynamic){ }
+      catch(e:Dynamic){
+         Sys.println(CallStack.toString(CallStack.exceptionStack()));
+      }
 
       if (output.length==1 && ~/^\S+\.(cpp|c|cc)$/.match(output[0]))
       {

@@ -1,3 +1,4 @@
+import haxe.CallStack;
 import haxe.io.Eof;
 import sys.io.Process;
 import sys.FileSystem;
@@ -368,7 +369,9 @@ class Setup
                Log.info("", "\x1b[33;1mDetected Android toolchain: "+arm_type+"-" + bestVer + "\x1b[0m");
             }
          }
-         catch(e:Dynamic) { }
+         catch(e:Dynamic) {
+            Sys.println(CallStack.toString(CallStack.exceptionStack()));
+         }
       }
 
       // See what ANDROID_HOST to use ...
@@ -433,7 +436,9 @@ class Setup
                      best = platform;
                }
             }
-         } catch(e:Dynamic) {}
+         } catch(e:Dynamic) {
+            Sys.println(CallStack.toString(CallStack.exceptionStack()));
+         }
 
          if (best==0)
          {
@@ -617,6 +622,7 @@ class Setup
                }
             }
          } catch (e:Dynamic) {
+      Sys.println(CallStack.toString(CallStack.exceptionStack()));
          };
 
          vc_setup_proc.close();
@@ -668,7 +674,9 @@ class Setup
                   ioDefines.set("HXCPP_FORCE_PDB_SERVER","1");
             }
          }
-      } catch(e:Dynamic){}
+      } catch(e:Dynamic){
+   Sys.println(CallStack.toString(CallStack.exceptionStack()));
+   }
       //if (cl_version!="") BuildTool.println("Using cl version: " + cl_version);
    }
 

@@ -1,3 +1,4 @@
+import haxe.CallStack;
 import sys.FileSystem;
 
 class CompileCache
@@ -78,7 +79,9 @@ class CompileCache
       {
          if (!FileSystem.exists(dir))
             PathManager.mkdir(dir);
-      } catch(e:Dynamic) { }
+      } catch(e:Dynamic) {
+         Sys.println(CallStack.toString(CallStack.exceptionStack()));
+      }
       return dir;
    }
 
@@ -89,7 +92,9 @@ class CompileCache
       {
          if (!FileSystem.exists(dir))
             PathManager.mkdir(dir);
-      } catch(e:Dynamic) { }
+      } catch(e:Dynamic) {
+         Sys.println(CallStack.toString(CallStack.exceptionStack()));
+      }
       return dir + "/" + hash.substr(2) + inExt;
    }
 

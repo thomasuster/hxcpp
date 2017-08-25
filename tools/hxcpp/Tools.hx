@@ -1,3 +1,4 @@
+import haxe.CallStack;
 class Tools {
   private static var onExit:Array<Int->Void> = [];
 
@@ -6,6 +7,10 @@ class Tools {
   }
 
   public static function exit(exitCode:Int) {
+     if(exit != 0) {
+        Sys.println("GOT HERE");
+        Sys.println(CallStack.toString(CallStack.callStack()));   
+     }
     for (hook in onExit) {
       hook(exitCode);
     }

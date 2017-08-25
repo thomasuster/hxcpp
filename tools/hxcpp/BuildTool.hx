@@ -549,6 +549,7 @@ class BuildTool
                    compiler.compile(file,-1,groupHeader,pchStamp);
                }
                catch (error:Dynamic) {
+                  Sys.println(CallStack.toString(CallStack.exceptionStack()));
                   if (threadExitCode!=0)
                      setThreadError(-1);
                   else
@@ -1215,6 +1216,7 @@ class BuildTool
       }
       catch (e:Dynamic)
       {
+         Sys.println(CallStack.toString(CallStack.exceptionStack()));
          return "0.0.0";
       }
    }
@@ -2158,7 +2160,9 @@ class BuildTool
             output = output.split("\r")[0].split("\n")[0];
             err  = process.stderr.readAll().toString();
             process.close();
-         } catch (e:Dynamic) { Log.error(e); }
+         } catch (e:Dynamic) {
+            Sys.println(CallStack.toString(CallStack.exceptionStack()));
+            Log.error(e); }
          Sys.setCwd(oldDir);
 
          if (output=="")

@@ -1,3 +1,4 @@
+import haxe.CallStack;
 import haxe.io.Bytes;
 import sys.io.Process;
 #if neko
@@ -130,7 +131,9 @@ class Log
                result = process.exitCode ();
                process.close ();
             }
-            catch (e:Dynamic) {};
+            catch (e:Dynamic) {
+               Sys.println(CallStack.toString(CallStack.exceptionStack()));
+            };
 
             colorSupported = (result == 0);
          }

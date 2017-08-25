@@ -1,3 +1,4 @@
+import haxe.CallStack;
 import sys.FileSystem;
 
 class PathManager
@@ -108,7 +109,9 @@ class PathManager
          {
             output = ProcessManager.runProcess(Sys.getEnv ("HAXEPATH"), "haxelib", [ "path", name ], true, false);
          }
-         catch (e:Dynamic) {}
+         catch (e:Dynamic) {
+            Sys.println(CallStack.toString(CallStack.exceptionStack()));
+         }
          
          Log.verbose = cache;
          
@@ -136,7 +139,9 @@ class PathManager
                         result = line;
                      }
                   }
-                  catch (e:Dynamic) {}
+                  catch (e:Dynamic) {
+                     Sys.println(CallStack.toString(CallStack.exceptionStack()));
+                  }
                }
             }
          }
@@ -254,7 +259,8 @@ class PathManager
             files = FileSystem.readDirectory(directory);
          }
          catch (e:Dynamic)
-         {   
+         {
+            Sys.println(CallStack.toString(CallStack.exceptionStack()));
             return;  
          }
          
@@ -272,7 +278,9 @@ class PathManager
                   FileSystem.deleteFile(path);
                }
             }
-            catch (e:Dynamic) {}
+            catch (e:Dynamic) {
+               Sys.println(CallStack.toString(CallStack.exceptionStack()));
+            }
          }
          
          Log.info("", " - \x1b[1mRemoving directory:\x1b[0m " + directory);
@@ -281,7 +289,9 @@ class PathManager
          {   
             FileSystem.deleteDirectory(directory);
          }
-         catch (e:Dynamic) {}
+         catch (e:Dynamic) {
+            Sys.println(CallStack.toString(CallStack.exceptionStack()));
+         }
       }
    }
 
