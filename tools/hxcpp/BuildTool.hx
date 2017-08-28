@@ -255,20 +255,32 @@ class BuildTool
          destination = null;
       }
 
-      for(target in inTargets)
-         buildTarget(target,destination);
+      Log.info("ONE");
+      try {
+         for(target in inTargets)
+            buildTarget(target,destination);
+      } catch(e:Dynamic) {
+         Log.info(CallStack.toString(CallStack.exceptionStack()));
+         Log.info("HERE a 2");
+         Log.info(e);
+      }
+      Log.info("TWO");
 
+      Log.info("THREE");
       var linkOutputs = mDefines.get("HXCPP_LINK_OUTPUTS");
       if (linkOutputs!=null)
          sys.io.File.saveContent(linkOutputs,outputs.join("\n")+"\n");
+      Log.info("FOUR");
       if (Log.verbose)
       {
          for(out in outputs)
             Log.v(" generated " + out);
       }
 
+      Log.info("FIVE");
       if (threadExitCode != 0)
          Tools.exit(threadExitCode);
+      Log.info("SIX");
    }
 
    public static function isDefault64()
@@ -342,8 +354,16 @@ class BuildTool
       var target = mTargets.get(inTarget);
       target.checkError();
 
-      for(sub in target.mSubTargets)
-         buildTarget(sub,null);
+      try {
+         
+         for(sub in target.mSubTargets)
+            buildTarget(sub,null);
+         
+         } catch(e:Dynamic) {
+            Log.info(CallStack.toString(CallStack.exceptionStack()));
+            Log.info("HERE a 2");
+            Log.info(e);
+         }
 
       var threads = BuildTool.sCompileThreadCount;
 
@@ -570,10 +590,14 @@ class BuildTool
             if (threadExitCode!=0)
                Tools.exit(threadExitCode);
          }
+         
+         Log.info("A");
          pool.end();
-
+         Log.info("B");
+            
          if (CompileCache.hasCache && group.mAsLibrary && mLinkers.exists("static_link"))
          {
+            Log.info("C");
             var linker = mLinkers.get("static_link");
             var targetDir = mCompiler.mObjDir;
             if (useCache)
@@ -589,18 +613,23 @@ class BuildTool
             // Linux the libraries must be added again if the references were not resolved the firs time
             if (group.mAddTwice)
                target.mLibs.push(linker.mLastOutName);
+            Log.info("D");
          }
          else if (nvcc)
          {
+            Log.info("E");
             var extraObj = linkNvccFiles(mCompiler.mObjDir, someCompiled, groupObjs, group.mId, mCompiler.mExt);
             groupObjs.push(extraObj);
             objs = objs.concat(groupObjs);
+            Log.info("F");
          }
          else
          {
+            Log.info("G");
             objs = objs.concat(groupObjs);
          }
 
+         Log.info("H");
          if (group.mDir!="." && group.mSetImportDir)
             Sys.setCwd( baseDir );
       }
