@@ -3,11 +3,17 @@ import sys.FileSystem;
 class BuildToolLauncher 
 {
     public static function main():Void {
+      Log.info("STARTED");
         var bin:String = './bin/tools/${calcBinName()}';
         if(FileSystem.exists(bin) && !isBuildingSelf()) {
-            Sys.exit(Sys.command('./bin/tools/${calcBinName()}', Sys.args()));
+        Log.info("CPP");
+        var code = Sys.command('./bin/tools/${calcBinName()}', Sys.args());
+        Log.info("FINISHED CPP RUN");
+            Sys.exit();
+            Log.info("FINISHED CPP EXIT");
         }
         else {
+        Log.info("NEKO");
             Sys.exit(Sys.command('neko', ['hxcpp-fallback.n'].concat(Sys.args())));
         }
     }

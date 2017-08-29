@@ -1300,6 +1300,7 @@ class BuildTool
 
    static public function main()
    {
+      Log.info("STARTED");
      try {
        runMain();
      }
@@ -1308,7 +1309,9 @@ class BuildTool
        Log.info('Uncaught exception on main thread: $e\n${haxe.CallStack.toString(haxe.CallStack.exceptionStack())}');
        Tools.exit(12);
      }
+      Log.info("PRE END");
      Tools.exit(0);
+      Log.info("ENDED");
    }
 
    // Process args and environment.
