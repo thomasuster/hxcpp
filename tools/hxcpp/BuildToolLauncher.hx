@@ -9,7 +9,7 @@ class BuildToolLauncher
         Log.info("CPP");
         var code = Sys.command('./bin/tools/${calcBinName()}', Sys.args());
         Log.info("FINISHED CPP RUN");
-            Sys.exit();
+            Sys.exit(code);
             Log.info("FINISHED CPP EXIT");
         }
         else {
