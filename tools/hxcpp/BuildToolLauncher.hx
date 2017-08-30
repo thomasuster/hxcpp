@@ -8,7 +8,7 @@ class BuildToolLauncher
         if(FileSystem.exists(bin) && !isBuildingSelf()) {
         Log.info("CPP");
         var code = Sys.command('./bin/tools/${calcBinName()}', Sys.args());
-        Log.info("FINISHED CPP RUN");
+        Log.info("FINISHED CPP RUN WITH CODE " + code);
             Sys.exit(code);
             Log.info("FINISHED CPP EXIT");
         }
