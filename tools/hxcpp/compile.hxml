@@ -1,7 +1,7 @@
 -main BuildToolLauncher
 -resource ../../haxelib.json@Signature
 -neko ../../hxcpp.n
-#-debug
+-debug
 
 --next
 
@@ -14,4 +14,4 @@
 
 -main BuildTool
 -cpp ../../bin/tools
-#-debug
+-debug

@@ -418,6 +418,7 @@ class ProcessManager
             BuildTool.setThreadError(-1);
          }
          Log.unlock();
+         Log.info("ABOUT TO RETURN -1!");
          return -1;
       }
 
