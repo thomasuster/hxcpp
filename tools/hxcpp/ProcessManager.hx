@@ -252,7 +252,8 @@ class ProcessManager
       else
       {
          var text = inText==null ?  "Running command" : inText;
-         Log.info("", " - \x1b[1m" + text + ":\x1b[0m " + formatMessage(command, args));
+         if (!Log.quiet)
+            Log.info("", " - \x1b[1m" + text + ":\x1b[0m " + formatMessage(command, args));
       }
       
       var result = 0;
