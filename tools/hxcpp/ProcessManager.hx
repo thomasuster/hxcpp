@@ -390,8 +390,9 @@ class ProcessManager
       if (inText != null)
          Log.info(inText,"");
 
-      if (!Log.quiet)
-         Log.v(" - \x1b[1mRunning command2:\x1b[0m " + formatMessage(command, args));
+//      if (!Log.quiet)
+//         Log.v(" - \x1b[1mRunning command2:\x1b[0m " + formatMessage(command, args));
+      Sys.print(".");
       Log.unlock();
 
       var output = new Array<String>();
