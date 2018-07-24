@@ -11,7 +11,7 @@ import cpp.vm.Mutex;
 class Log
 {
    public static var mute:Bool= false;
-   public static var quiet:Bool = false;
+   public static var quiet:Bool = true;
    public static var verbose:Bool = false;
 
    public  static var colorSupported:Null<Bool> = null;
