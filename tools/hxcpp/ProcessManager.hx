@@ -53,6 +53,7 @@ class ProcessManager
 
    private static function formatMessage(command:String, args:Array<String>, colorize:Bool = true):String
    {
+      return ".";
       var message = "";
       
       if (colorize)
@@ -391,7 +392,7 @@ class ProcessManager
          Log.info(inText,"");
 
       if (!Log.quiet)
-         Log.v(" - \x1b[1mRunning command:\x1b[0m " + formatMessage(command, args));
+         Log.v(" - \x1b[1mRunning command2:\x1b[0m " + formatMessage(command, args));
       Log.unlock();
 
       var output = new Array<String>();
