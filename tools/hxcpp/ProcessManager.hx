@@ -64,42 +64,42 @@ class ProcessManager
          message = command;
       }
       
-      for (arg in args)
-      {
-         if (colorize)
-         {
-            var ext = Path.extension(arg);
-            if (ext == "cpp" || ext == "c" || ext == "h" || ext == "hpp" || ext == "m" || ext == "mm")
-            {
-               var split = arg.split ("/");
-               if (split.length > 1)
-               {
-                  arg = "\x1b[33m" + split.slice(0, split.length - 1).join("/") + "/\x1b[33;1m" + split[split.length - 1] + "\x1b[0m";
-               }
-               else
-               {
-                  arg = "\x1b[1m" + arg + "\x1b[0m";
-               }
-            }
-            else if (StringTools.startsWith(arg, "-D"))
-            {
-               arg = "\x1b[1m" + arg + "\x1b[0m";
-            }
-            else
-            {
-               arg = "\x1b[0m" + arg + "\x1b[0m";
-            }
-         }
-         
-         if (arg.indexOf(" ") > -1)
-         {
-            message += " \"" + arg + "\"";
-         }
-         else
-         {
-            message += " " + arg;
-         }
-      }
+//      for (arg in args)
+//      {
+//         if (colorize)
+//         {
+//            var ext = Path.extension(arg);
+//            if (ext == "cpp" || ext == "c" || ext == "h" || ext == "hpp" || ext == "m" || ext == "mm")
+//            {
+//               var split = arg.split ("/");
+//               if (split.length > 1)
+//               {
+//                  arg = "\x1b[33m" + split.slice(0, split.length - 1).join("/") + "/\x1b[33;1m" + split[split.length - 1] + "\x1b[0m";
+//               }
+//               else
+//               {
+//                  arg = "\x1b[1m" + arg + "\x1b[0m";
+//               }
+//            }
+//            else if (StringTools.startsWith(arg, "-D"))
+//            {
+//               arg = "\x1b[1m" + arg + "\x1b[0m";
+//            }
+//            else
+//            {
+//               arg = "\x1b[0m" + arg + "\x1b[0m";
+//            }
+//         }
+//         
+//         if (arg.indexOf(" ") > -1)
+//         {
+//            message += " \"" + arg + "\"";
+//         }
+//         else
+//         {
+//            message += " " + arg;
+//         }
+//      }
       return message;
    }
 
