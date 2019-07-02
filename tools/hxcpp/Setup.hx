@@ -453,8 +453,10 @@ class Setup
                if (file.substr(0,8)=="android-")
                {
                   var platform = Std.parseInt(file.substr(8));
-                  if (platform>best)
-                     best = platform;
+                  if (platform>best) {
+                      best = platform;
+                    break;
+                  }
                }
             }
          } catch(e:Dynamic) {}
@@ -467,6 +469,7 @@ class Setup
 
          Log.info("", "\x1b[33;1mUsing newest Android NDK platform: " + best + "\x1b[0m");
          defines.set("PLATFORM", "android-" + best);
+         defines.set("PLATFORM_NUMBER", ""+best);
          androidPlatform = best;
       }
       defines.set("ANDROID_PLATFORM_DEFINE", "-DHXCPP_ANDROID_PLATFORM=" + androidPlatform);
