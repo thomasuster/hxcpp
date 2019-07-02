@@ -5,33 +5,20 @@
 <!-- Set architecture -->
 <section if="HXCPP_X86">
   <set name="ARCH" value="-x86" />
-  <!--<set name="ABI" value="x86"  />-->
-  <!--<set name="PLATFORM_ARCH" value="arch-x86" />-->
   <set name="EXEPREFIX" value="i686-linux-android" />
-  <set name="TARGET_TARGET" value="${EXEPREFIX}${PLATFORM_NUMBER}" />
 </section>
 
 <section unless="HXCPP_X86">
-  <set name="ARCH" value="-v7" if="HXCPP_ARMV7" />
-  <set name="ABI" value="armeabi-v7a" />
-  <set name="PLATFORM_ARCH" value="arch-arm" />
-  <set name="PLATFORM" value="android-5" unless="PLATFORM" />
-  <set name="TARGET_TARGET" value="armv7a-linux-androideabi${PLATFORM_NUMBER}" />
+  <set name="ARCH" value="-v7" />
   <set name="EXEPREFIX" value="arm-linux-androideabi" />
 </section>
 
 <section if="HXCPP_ARM64">
   <set name="ARCH" value="-64"/>
-  <set name="ABI" value="arm64-v8a" />
-  <set name="PLATFORM_ARCH" value="arch-arm64" />
-  <set name="TOOLCHAIN" value="aarch64-linux-android-${TOOLCHAIN_VERSION}" />
   <set name="EXEPREFIX" value="aarch64-linux-android" />
-  <set name="PLATFORM" value="android-19" unless="PLATFORM" />
 </section>
 
-<set name="prebuiltBase" value="${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/${ANDROID_HOST}/" />
-
-<path name="${prebuiltBase}/bin" />
+<path name="${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/${ANDROID_HOST}/bin" />
 
 <set name="HXCPP_AR" value="arm-linux-androideabi-ar" />
 
@@ -40,7 +27,7 @@
 <compiler id="android-gcc" exe="clang++">
 
   <exe name="clang++" />
-  <flag value="--target=${TARGET_TARGET}" />
+  <flag value="--target=${EXEPREFIX}${PLATFORM_NUMBER}" />
     
   <include name="toolchain/common-defines.xml" />
   <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug"/>
@@ -55,7 +42,6 @@
   <flag value="-Wno-overflow" />
   <cppflag value="-Wno-invalid-offsetof" />
   <cppflag value="-frtti"/>
-  <flag value="-D_LINUX_STDDEF_H "/> <!-- Avoid compiler including 2 version of file -->
 
 <!--<section if="HXCPP_ARMV7">-->
    <!--<flag value="-mfpu=vfpv3-d16"  />-->
@@ -90,7 +76,7 @@
 
   <exe name="clang++" />
   <flag value ="-shared" />
-  <flag value="--target=${TARGET_TARGET}" />
+  <flag value="--target=${EXEPREFIX}${PLATFORM_NUMBER}" />
 
   <flag value ="-static-libstdc++" />
   <flag value ="-v" />
