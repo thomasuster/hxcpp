@@ -5,11 +5,10 @@
 <!-- Set architecture -->
 <section if="HXCPP_X86">
   <set name="ARCH" value="-x86" />
-  <set name="ABI" value="x86"  />
-  <set name="PLATFORM_ARCH" value="arch-x86" />
+  <!--<set name="ABI" value="x86"  />-->
+  <!--<set name="PLATFORM_ARCH" value="arch-x86" />-->
   <set name="EXEPREFIX" value="i686-linux-android" />
-  <set name="PLATFORM" value="android-14" unless="PLATFORM" />
-  <set name="TARGET_TARGET" value="i686-linux-android${PLATFORM_NUMBER}" />
+  <set name="TARGET_TARGET" value="${EXEPREFIX}${PLATFORM_NUMBER}" />
 </section>
 
 <section unless="HXCPP_X86">
@@ -77,7 +76,7 @@
   </section>
   <flag value="-O0" if="debug"/>
   <flag value="-g" if="HXCPP_DEBUG_LINK"/>
-  <flag value="-DNDEBUG"/>
+  <!--<flag value="-DNDEBUG"/>-->
   <flag value="-DHXCPP_LOAD_DEBUG" if="HXCPP_LOAD_DEBUG"/>
   <flag value="-c"/>
   <outflag value="-o"/>
