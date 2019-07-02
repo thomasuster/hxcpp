@@ -62,7 +62,6 @@
   </section>
   <flag value="-O0" if="debug"/>
   <flag value="-g" if="HXCPP_DEBUG_LINK"/>
-  <!--<flag value="-DNDEBUG"/>-->
   <flag value="-DHXCPP_LOAD_DEBUG" if="HXCPP_LOAD_DEBUG"/>
   <flag value="-c"/>
   <outflag value="-o"/>
