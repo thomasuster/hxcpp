@@ -50,10 +50,12 @@
   <flag value="-fexceptions"/>
   <flag value="-g" if="HXCPP_DEBUG_LINK"/>
   <flag value="-c"/>
-  
   <flag value="-fpic"/>
-  <flag value="-fno-short-enums"/>
-  <flag value="-Wno-overflow" />
+
+  <!--<flag value="-Wno-overflow" />-->
+  
+  <!--<flag value="-fno-short-enums"/>-->
+  
   <!--<flag value="-fomit-frame-pointer"/>-->
   <!--<flag value="-fno-strict-aliasing"/>-->
 
