@@ -29,33 +29,33 @@
   <exe name="clang++" />
   <flag value="--target=${EXEPREFIX}${PLATFORM_NUMBER}" />
   
-  <!-- Paths -->
+  <!-- File Related -->
   <include name="toolchain/common-defines.xml" />
   <flag value="-I${HXCPP}/include"/>
   <flag value="-Iinclude"/>
   <objdir value="obj/android${OBJEXT}${ARCH}" />
-    
+  <ext value=".obj"/>
+  
   <!-- Macros -->
   <flag value="-DANDROID=ANDROID"/>
   <flag value="-DHX_ANDROID"/>
   <flag value="-DHXCPP_LOAD_DEBUG" if="HXCPP_LOAD_DEBUG"/>
   <flag value="-D${ANDROID_PLATFORM_DEFINE}"/>
-    
+  
   <!-- Options -->
   <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug"/>
-  <flag value="-fpic"/>
   <flag value="-fvisibility=hidden"/>
   <flag value="-ffunction-sections"/>
   <flag value="-fstack-protector"/>
-  <flag value="-fno-short-enums"/>
-  <flag value="-Wno-overflow" />
-  <flag value="-fomit-frame-pointer"/>
   <flag value="-fexceptions"/>
-  <flag value="-fno-strict-aliasing"/>
   <flag value="-g" if="HXCPP_DEBUG_LINK"/>
   <flag value="-c"/>
-    
-  <ext value=".obj"/>
+  
+  <flag value="-fpic"/>
+  <flag value="-fno-short-enums"/>
+  <flag value="-Wno-overflow" />
+  <!--<flag value="-fomit-frame-pointer"/>-->
+  <!--<flag value="-fno-strict-aliasing"/>-->
 
     <!--<section if="HXCPP_ARMV7">-->
     <!--<flag value="-mfpu=vfpv3-d16"  />-->
