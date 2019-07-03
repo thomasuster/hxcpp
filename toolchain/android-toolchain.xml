@@ -28,46 +28,45 @@
 
   <exe name="clang++" />
   <flag value="--target=${EXEPREFIX}${PLATFORM_NUMBER}" />
-    
+  
+  <!-- Paths -->
   <include name="toolchain/common-defines.xml" />
-  <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug"/>
   <flag value="-I${HXCPP}/include"/>
   <flag value="-Iinclude"/>
-  
+  <objdir value="obj/android${OBJEXT}${ARCH}" />
+    
+  <!-- Macros -->
+  <flag value="-DANDROID=ANDROID"/>
+  <flag value="-DHX_ANDROID"/>
+  <flag value="-DHXCPP_LOAD_DEBUG" if="HXCPP_LOAD_DEBUG"/>
+  <flag value="-D${ANDROID_PLATFORM_DEFINE}"/>
+    
+  <!-- Options -->
+  <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug"/>
   <flag value="-fpic"/>
   <flag value="-fvisibility=hidden"/>
   <flag value="-ffunction-sections"/>
   <flag value="-fstack-protector"/>
   <flag value="-fno-short-enums"/>
   <flag value="-Wno-overflow" />
-  <cppflag value="-Wno-invalid-offsetof" />
-  <cppflag value="-frtti"/>
-
-<!--<section if="HXCPP_ARMV7">-->
-   <!--<flag value="-mfpu=vfpv3-d16"  />-->
-<!--</section>-->
-
   <flag value="-fomit-frame-pointer"/>
   <flag value="-fexceptions"/>
   <flag value="-fno-strict-aliasing"/>
-  <flag value="-DANDROID=ANDROID"/>
-  <flag value="-DHX_ANDROID"/>
-  <flag value="${ANDROID_PLATFORM_DEFINE}"/>
-  
-  <flag value="-Wa,--noexecstack"/>
-  <flag value="-O2" unless="debug || HXCPP_OPTIMIZE_FOR_SIZE || HXCPP_OPTIMIZE_FOR_FAST"/>
-  
-  <section if="HXCPP_OPTIMIZE_FOR_FAST" unless="debug">
-    <flag value="-Ofast" />
-  </section>
-  <flag value="-O0" if="debug"/>
   <flag value="-g" if="HXCPP_DEBUG_LINK"/>
-  <flag value="-DHXCPP_LOAD_DEBUG" if="HXCPP_LOAD_DEBUG"/>
   <flag value="-c"/>
-  <outflag value="-o"/>
-  <ext value=".obj"/>
     
-  <objdir value="obj/android${OBJEXT}${ARCH}" />
+  <cppflag value="-Wno-invalid-offsetof" />
+  <cppflag value="-frtti"/>
+    
+  <outflag value="-o"/>
+    
+  <ext value=".obj"/>
+
+    <!--<section if="HXCPP_ARMV7">-->
+    <!--<flag value="-mfpu=vfpv3-d16"  />-->
+    <!--</section>-->
+    
+  
 </compiler>
 
 

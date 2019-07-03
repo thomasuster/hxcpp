@@ -472,7 +472,7 @@ class Setup
          defines.set("PLATFORM_NUMBER", ""+best);
          androidPlatform = best;
       }
-      defines.set("ANDROID_PLATFORM_DEFINE", "-DHXCPP_ANDROID_PLATFORM=" + androidPlatform);
+      defines.set("ANDROID_PLATFORM_DEFINE", "HXCPP_ANDROID_PLATFORM=" + androidPlatform);
       if (Log.verbose) Log.println("");
    }
 
