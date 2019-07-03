@@ -55,17 +55,11 @@
   <flag value="-g" if="HXCPP_DEBUG_LINK"/>
   <flag value="-c"/>
     
-  <cppflag value="-Wno-invalid-offsetof" />
-  <cppflag value="-frtti"/>
-    
-  <outflag value="-o"/>
-    
   <ext value=".obj"/>
 
     <!--<section if="HXCPP_ARMV7">-->
     <!--<flag value="-mfpu=vfpv3-d16"  />-->
     <!--</section>-->
-    
   
 </compiler>
 
