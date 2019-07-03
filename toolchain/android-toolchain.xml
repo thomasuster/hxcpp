@@ -8,7 +8,12 @@
   <set name="EXEPREFIX" value="i686-linux-android" />
 </section>
 
-<section unless="HXCPP_X86">
+<section if="HXCPP_X86_64">
+  <set name="ARCH" value="-x86_64" />
+  <set name="EXEPREFIX" value="x86_64-linux-android" />
+</section>
+
+<section if="HXCPP_ARMV7">
   <set name="ARCH" value="-v7" />
   <set name="EXEPREFIX" value="arm-linux-androideabi" />
 </section>
@@ -51,17 +56,6 @@
   <flag value="-g" if="HXCPP_DEBUG_LINK"/>
   <flag value="-c"/>
   <flag value="-fpic"/>
-
-  <!--<flag value="-Wno-overflow" />-->
-  
-  <!--<flag value="-fno-short-enums"/>-->
-  
-  <!--<flag value="-fomit-frame-pointer"/>-->
-  <!--<flag value="-fno-strict-aliasing"/>-->
-
-    <!--<section if="HXCPP_ARMV7">-->
-    <!--<flag value="-mfpu=vfpv3-d16"  />-->
-    <!--</section>-->
   
 </compiler>
 
